@@ -184,9 +184,11 @@ class VLC(object):
             except subprocess.CalledProcessError as e:
                 return []
             else:
-                return output.split('\n')[:-1]
+                return output.decode('utf-8').split('\n')[:-1]
 
-        for pid in get_pids():
+        pids = get_pids()
+        vh.logger.debug('About to kill PIDS {}'.format(repr(pids)))
+        for pid in pids:
             try:
                 output = subprocess.check_output(
                     'kill {}'.format(pid),

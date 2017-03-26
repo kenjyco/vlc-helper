@@ -17,6 +17,7 @@ chfunc = {
     'i': (_vlc.show_info, 'show info about currently playing file'),
     'n': (_vlc.next, 'next file in playlist'),
     'p': (_vlc.previous, 'previous file in playlist'),
+    'K': (_vlc.killall, 'kill all VLC processes'),
 }
 
 
