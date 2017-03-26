@@ -43,9 +43,11 @@ class VLC(object):
         self._player = dbus.Interface(self._bus_obj, 'org.mpris.MediaPlayer2.Player')
         self._prop_get = partial(self._properties_interface.Get, 'org.mpris.MediaPlayer2.Player')
         self._prop_set = partial(self._properties_interface.Set, 'org.mpris.MediaPlayer2.Player')
+        vh.logger.debug('Refreshed dbus.SessionBus')
 
     def _get(self, name):
         """Return the value of a `MediaPlayer2.Player` property"""
+        vh.logger.debug(name)
         try:
             return self._prop_get(name)
         except (dbus.DBusException, AttributeError):
@@ -54,6 +56,7 @@ class VLC(object):
 
     def _set(self, name, value):
         """Set a `MediaPlayer2.Player` property"""
+        vh.logger.debug('{} -> {}'.format(name, value))
         try:
             return self._prop_set(name, value)
         except (dbus.DBusException, AttributeError):
@@ -62,6 +65,7 @@ class VLC(object):
 
     def _method(self, name, *args):
         """Run a `MediaPlayer2.Player` method"""
+        vh.logger.debug('{} -> {}'.format(name, repr(args)))
         try:
             if args:
                 cmd = partial(getattr(self._player, name), *args)
@@ -90,14 +94,17 @@ class VLC(object):
     @property
     def position(self):
         """Return current video position (in seconds, not microseconds)"""
+        vh.logger.debug('Getting position')
         return int(self._get('Position')) / 1000000.0
 
     @property
     def filename(self):
+        vh.logger.debug('Getting filename')
         return os.path.basename(self._path)
 
     @property
     def dirname(self):
+        vh.logger.debug('Getting dirname')
         try:
             return os.path.dirname(self._path).split('://')[1]
         except IndexError:
@@ -109,6 +116,7 @@ class VLC(object):
 
         See: `-window` option in `man import`
         """
+        vh.logger.debug('Getting window_title')
         rx = re.compile(r'^(?:\S+\s+){3}(.*)$')
         try:
             output = subprocess.check_output('wmctrl -l | grep "VLC media player"', shell=True)
@@ -122,6 +130,7 @@ class VLC(object):
 
     @property
     def info(self):
+        vh.logger.debug('Getting info')
         return {
             'filename': self.filename,
             'dirname': self.dirname,
@@ -138,10 +147,12 @@ class VLC(object):
 
     def seek(self, val):
         """Seek forward or backward specified number of seconds"""
+        vh.logger.debug(val)
         self._method('Seek', (val * 1000000.0))
 
     def go(self, timestamp):
         """Jump to timestamp in the current file (wrapper to self.seek)"""
+        vh.logger.debug('Jumping to timestamp {}'.format(timestamp))
         seconds = ih.timestamp_to_seconds(timestamp)
         if seconds is None:
             return
@@ -155,7 +166,9 @@ class VLC(object):
 
     def _screenshot(self):
         """Take a screenshot and include file position in output filename"""
+        vh.logger.debug('Taking a screenshot')
         if not self.dirname:
+            vh.logger.error('No dirname... nothing to do')
             return
         outfile_base, ext = os.path.splitext(self.filename)
         outfile_name = 'screenshot--{}--{}.png'.format(
@@ -164,6 +177,7 @@ class VLC(object):
         )
         outfile = os.path.join(self.dirname, outfile_name)
         cmd = 'import -window {} {}'.format(repr(self.window_title), repr(outfile))
+        vh.logger.debug('{}'.format(repr(cmd)))
         try:
             subprocess.check_output(cmd, stderr=subprocess.STDOUT, shell=True)
         except subprocess.CalledProcessError as e:
@@ -212,8 +226,9 @@ class VLC(object):
 
 def vlcstart_precise(filename='', starttime='', stoptime='', background=False):
     if not os.getenv('DISPLAY'):
-        vh.logger.warning('not connected to a DISPLAY')
+        vh.logger.error('not connected to a DISPLAY')
         return
+    vh.logger.debug(repr(sorted(locals().items())))
     if filename:
         fullpath = os.path.abspath(os.path.expanduser(filename))
         starttime = ih.timestamp_to_seconds(starttime) or 0
@@ -225,6 +240,7 @@ def vlcstart_precise(filename='', starttime='', stoptime='', background=False):
     else:
         _cmd = 'vlc &>/dev/null'
 
+    vh.logger.debug('_cmd -> {}'.format(repr(_cmd)))
     cmd = partial(subprocess.check_output, _cmd, stderr=subprocess.STDOUT, shell=True)
     if not background:
         try:
@@ -237,8 +253,9 @@ def vlcstart_precise(filename='', starttime='', stoptime='', background=False):
 
 def play_many(*filenames, background=False):
     if not os.getenv('DISPLAY'):
-        vh.logger.warning('not connected to a DISPLAY')
+        vh.logger.error('not connected to a DISPLAY')
         return
+    vh.logger.debug(repr(sorted(locals().items())))
     if filenames:
         _cmd = 'vlc --fullscreen {} &>/dev/null'.format(
             ' '.join([repr(x) for x in filenames])
