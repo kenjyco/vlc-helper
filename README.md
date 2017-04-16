@@ -9,8 +9,14 @@ installallation.
 
 ## Install
 
+Install system requirements for `dbus-python`
+
 ```
-% python3 -m venv venv
-% venv/bin/pip3 install vlc-helper
-% python3 -m venv --system-site-packages venv
+sudo apt-get install -y pkg-config libdbus-1-dev libdbus-glib-1-dev
+```
+
+Install with `pip`
+
+```
+% pip install vlc-helper
 ```

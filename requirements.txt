@@ -1,3 +1,4 @@
 chloop
 bg-helper
+dbus-python
 click

@@ -14,6 +14,7 @@ setup(
     install_requires=[
         'chloop',
         'bg-helper',
+        'dbus-python',
         'click>=6.0',
     ],
     include_package_data=True,
@@ -36,5 +37,5 @@ setup(
         'Topic :: Software Development :: Libraries',
         'Intended Audience :: Developers',
     ],
-    keywords=['vlc', 'video', 'helper']
+    keywords=['vlc', 'video', 'helper', 'screenshots', 'annotations']
 )
