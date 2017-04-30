@@ -31,4 +31,4 @@ class REPL(GetCharLoop):
         _vlc.go(timestamp)
 
 
-repl = REPL(chfunc_dict=chfunc, prompt='vlc-repl> ')
+repl = REPL(chfunc_dict=chfunc, name='vlc', prompt='vlc-repl> ')
