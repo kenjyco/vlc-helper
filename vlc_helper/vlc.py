@@ -173,7 +173,7 @@ class VLC(object):
         outfile_base, ext = os.path.splitext(self.filename)
         outfile_name = 'screenshot--{}--{}.png'.format(
             outfile_base,
-            str(self.position).rjust(12, '0')      # zero-pad the float as a string
+            '{0:.4f}'.format(self.position).rjust(12, '0')  # 12 characters, with 4 after decimal
         )
         outfile = os.path.join(self.dirname, outfile_name)
         cmd = 'import -window {} {}'.format(repr(self.window_title), repr(outfile))
