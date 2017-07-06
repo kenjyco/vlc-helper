@@ -1,15 +1,12 @@
 You must have the following system packages installed
 
 - `vlc`
-- `imagemagick`
-- `wmctrl`
-
-You must also have the `dbus-python` package in your system-wide Python
-installallation.
+- `imagemagick` (to take screenshots)
+- `wmctrl` (to determine window name)
 
 ## Install
 
-Install system requirements for `dbus-python`
+Install system requirements for `dbus-python` package
 
 ```
 sudo apt-get install -y pkg-config libdbus-1-dev libdbus-glib-1-dev
