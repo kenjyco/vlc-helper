@@ -3,13 +3,13 @@ from setuptools import setup, find_packages
 
 setup(
     name='vlc-helper',
-    version='0.1.4',
+    version='0.1.5',
     description='CLI helpers for VLC media player',
     author='Ken',
     author_email='kenjyco@gmail.com',
     license='MIT',
     url='https://github.com/kenjyco/vlc-helper',
-    download_url='https://github.com/kenjyco/vlc-helper/tarball/v0.1.4',
+    download_url='https://github.com/kenjyco/vlc-helper/tarball/v0.1.5',
     packages=find_packages(),
     install_requires=[
         'chloop',
