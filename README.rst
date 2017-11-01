@@ -18,6 +18,12 @@ Install system requirements for ``dbus-python`` package
 
     % sudo apt-get install -y pkg-config libdbus-1-dev libdbus-glib-1-dev
 
+Install Redis and start server
+
+::
+
+    % sudo apt-get install -y redis-server
+
 Install with ``pip``
 
 ::
@@ -46,4 +52,3 @@ The ``vlc-repl`` and ``myvlc`` scripts are provided
 
     Options:
       --help  Show this message and exit.
-
