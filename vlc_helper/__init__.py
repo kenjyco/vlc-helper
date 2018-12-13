@@ -2,7 +2,7 @@ import logging
 import os.path
 
 
-LOGFILE = os.path.abspath('log--vlc-helper.log')
+LOGFILE = os.path.abspath(os.path.expanduser('~/logs/vlc-helper.log'))
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 file_handler = logging.FileHandler(LOGFILE, mode='a')
