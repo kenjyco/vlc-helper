@@ -14,6 +14,7 @@ setup(
     install_requires=[
         'chloop',
         'bg-helper',
+        'fs-helper',
         'dbus-python',
         'click>=6.0',
     ],
