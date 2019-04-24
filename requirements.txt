@@ -2,3 +2,8 @@ chloop
 bg-helper
 dbus-python
 click
+
+# For development
+ipython
+pdbpp
+pytest
