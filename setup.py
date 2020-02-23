@@ -12,11 +12,10 @@ setup(
     download_url='https://github.com/kenjyco/vlc-helper/tarball/v0.1.6',
     packages=find_packages(),
     install_requires=[
-        'chloop',
         'bg-helper',
-        'fs-helper',
-        'dbus-python',
+        'chloop',
         'click>=6.0',
+        'dbus-python',
     ],
     include_package_data=True,
     package_dir={'': '.'},
