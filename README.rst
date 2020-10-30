@@ -5,7 +5,7 @@ This is **Linux only** as D-BUS does not work on Mac.
 
 You must have the following system packages installed
 
--  ``vlc``
+-  ``vlc`` (to play videos)
 -  ``imagemagick`` (to take screenshots)
 -  ``wmctrl`` (to determine window name)
 
@@ -16,19 +16,20 @@ Install system requirements for ``dbus-python`` package
 
 ::
 
-    % sudo apt-get install -y pkg-config libdbus-1-dev libdbus-glib-1-dev
+   % sudo apt-get install -y pkg-config libdbus-1-dev libdbus-glib-1-dev
 
-Install Redis and start server
+If you don’t have `docker <https://docs.docker.com/get-docker>`__
+installed, install Redis and start server
 
 ::
 
-    % sudo apt-get install -y redis-server
+   % sudo apt-get install -y redis-server
 
 Install with ``pip``
 
 ::
 
-    % pip3 install vlc-helper
+   % pip3 install vlc-helper
 
 Usage
 -----
@@ -37,18 +38,18 @@ The ``vlc-repl`` and ``myvlc`` scripts are provided
 
 ::
 
-    % venv/bin/vlc-repl --help
-    Usage: vlc-repl [OPTIONS]
+   % venv/bin/vlc-repl --help
+   Usage: vlc-repl [OPTIONS]
 
-      Start a REPL to control VLC media player
+     Start a REPL to control VLC media player
 
-    Options:
-      --help  Show this message and exit.
+   Options:
+     --help  Show this message and exit.
 
-    % venv/bin/myvlc --help
-    Usage: myvlc [OPTIONS] [FILENAME] [STARTTIME] [STOPTIME]
+   % venv/bin/myvlc --help
+   Usage: myvlc [OPTIONS] [FILENAME] [STARTTIME] [STOPTIME]
 
-      Start filename at specific start time (and/or end at specific end time)
+     Start filename at specific start time (and/or end at specific end time)
 
-    Options:
-      --help  Show this message and exit.
+   Options:
+     --help  Show this message and exit.

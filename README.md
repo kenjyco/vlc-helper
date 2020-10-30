@@ -4,7 +4,7 @@ This is **Linux only** as D-BUS does not work on Mac.
 
 You must have the following system packages installed
 
-- `vlc`
+- `vlc` (to play videos)
 - `imagemagick` (to take screenshots)
 - `wmctrl` (to determine window name)
 
@@ -16,7 +16,8 @@ Install system requirements for `dbus-python` package
 % sudo apt-get install -y pkg-config libdbus-1-dev libdbus-glib-1-dev
 ```
 
-Install Redis and start server
+If you don't have [docker](https://docs.docker.com/get-docker) installed,
+install Redis and start server
 
 ```
 % sudo apt-get install -y redis-server
