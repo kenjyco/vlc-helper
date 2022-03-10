@@ -18,13 +18,6 @@ Install system requirements for ``dbus-python`` package
 
    % sudo apt-get install -y pkg-config libdbus-1-dev libdbus-glib-1-dev
 
-If you don’t have `docker <https://docs.docker.com/get-docker>`__
-installed, install Redis and start server
-
-::
-
-   % sudo apt-get install -y redis-server
-
 Install with ``pip``
 
 ::
