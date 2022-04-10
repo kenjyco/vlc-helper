@@ -33,11 +33,14 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Console',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3.5',
-        'Topic :: Software Development :: Libraries',
         'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: POSIX :: Linux',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python',
+        'Topic :: Multimedia :: Video',
+        'Topic :: Software Development :: Libraries',
+        'Topic :: Utilities',
     ],
-    keywords=['vlc', 'video', 'helper', 'screenshots', 'annotations']
+    keywords=['vlc', 'video', 'video player', 'cli', 'command-line', 'repl', 'dbus', 'screenshots', 'annotations', 'helper', 'kenjyco']
 )
