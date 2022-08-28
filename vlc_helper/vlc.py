@@ -13,7 +13,7 @@ from pprint import pprint
 from bg_helper import SimpleBackgroundTask
 try:
     import dbus
-except ImportError:
+except (ImportError, ModuleNotFoundError):
     pass
 
 
