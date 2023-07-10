@@ -9,14 +9,14 @@ with open('requirements.txt', 'r') as fp:
 
 setup(
     name='vlc-helper',
-    version='0.1.7',
+    version='0.1.8',
     description='CLI helpers for VLC media player',
     long_description=long_description,
     author='Ken',
     author_email='kenjyco@gmail.com',
     license='MIT',
     url='https://github.com/kenjyco/vlc-helper',
-    download_url='https://github.com/kenjyco/vlc-helper/tarball/v0.1.7',
+    download_url='https://github.com/kenjyco/vlc-helper/tarball/v0.1.8',
     packages=find_packages(),
     install_requires=requirements,
     include_package_data=True,
