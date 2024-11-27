@@ -12,6 +12,11 @@ from functools import partial
 from pprint import pprint
 from bg_helper import SimpleBackgroundTask
 try:
+    ModuleNotFoundError
+except NameError:
+    class ModuleNotFoundError(ImportError):
+        pass
+try:
     import dbus
 except (ImportError, ModuleNotFoundError):
     pass
